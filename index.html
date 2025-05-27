@@ -1,16 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  />
-  <title>SnailMail</title>
-  <link rel="stylesheet" href="./css/styles.css" />
-</head>
-
+<<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SnailMail</title>
+  
+    <!-- favicon -->
+    <link rel="icon" href="/snail.svg" type="image/svg+xml" />
+    <link rel="alternate icon" href="/favicon.png" />
+  
+    <!-- your stylesheet -->
+    <link rel="stylesheet" href="./css/styles.css" />
+  </head>
+  
 <body>
+
   <!-- NAV -->
   <header class="nav-header">
     <div class="nav-container">
@@ -45,10 +49,7 @@
       <div class="hero-content">
         <div class="snail-icon">🐌</div>
         <h1>SnailMail</h1>
-        <p>
-          A calm, creative email app for artists,
-          writers, and overthinkers.
-        </p>
+        <p>A calm, creative email app for artists, writers, and overthinkers.</p>
         <form id="signup-form" class="signup-form">
           <input
             type="email"
@@ -56,9 +57,7 @@
             placeholder="Enter your email"
             required
           />
-          <button type="submit" class="cta-button">
-            Join the Beta
-          </button>
+          <button type="submit" class="cta-button">Join the Beta</button>
         </form>
       </div>
     </section>
@@ -67,46 +66,28 @@
     <section id="features" class="features">
       <div class="section-header">
         <h2>Why SnailMail?</h2>
-        <p>
-          Designed for mindful communication in
-          a chaotic digital world
-        </p>
+        <p>Designed for mindful communication in a chaotic digital world</p>
       </div>
       <div class="feature-grid">
         <div class="feature-card">
           <div class="feature-icon">💡</div>
           <h3>Minimal UI</h3>
-          <p>
-            Clean, distraction-free interface that
-            lets you focus on what matters most—your
-            message.
-          </p>
+          <p>Clean, distraction-free interface that lets you focus on what matters most—your message.</p>
         </div>
         <div class="feature-card">
           <div class="feature-icon">🎨</div>
           <h3>Creative Focus</h3>
-          <p>
-            Built-in tools for writers and artists,
-            including mood boards and inspiration
-            spaces.
-          </p>
+          <p>Built-in tools for writers and artists, including mood boards and inspiration spaces.</p>
         </div>
         <div class="feature-card">
           <div class="feature-icon">🍃</div>
           <h3>Slow by Design</h3>
-          <p>
-            Gentle reminders to pause and
-            reflect—encouraging thoughtful
-            communication.
-          </p>
+          <p>Gentle reminders to pause and reflect—encouraging thoughtful communication.</p>
         </div>
         <div class="feature-card">
           <div class="feature-icon">🖼️</div>
           <h3>Mood Boards</h3>
-          <p>
-            Custom mood boards to spark creativity
-            before you hit send.
-          </p>
+          <p>Custom mood boards to spark creativity before you hit send.</p>
         </div>
       </div>
     </section>
@@ -115,10 +96,7 @@
     <section id="pricing" class="pricing">
       <div class="section-header">
         <h2>Simple, Transparent Pricing</h2>
-        <p>
-          Choose the plan that works for your
-          creative workflow
-        </p>
+        <p>Choose the plan that works for your creative workflow</p>
       </div>
       <div class="pricing-toggle">
         <button
@@ -131,19 +109,13 @@
           data-period="yearly"
           onclick="togglePricing('yearly')"
         >Yearly</button>
-        <span class="save-note">
-          Save 20% annually!
-        </span>
+        <span class="save-note">Save 20% annually!</span>
       </div>
       <div class="pricing-grid">
         <div class="pricing-card">
           <h3>Starter</h3>
           <div class="price-row">
-            <p
-              class="price-amount"
-              data-monthly="0"
-              data-yearly="0"
-            >0</p>
+            <p class="price-amount" data-monthly="0" data-yearly="0">$0</p>
             <span>/month</span>
           </div>
           <ul>
@@ -151,19 +123,12 @@
             <li>Basic creative tools</li>
             <li>1 GB storage</li>
           </ul>
-          <button class="cta-button">
-            Get Started Free
-          </button>
+          <button class="cta-button">Get Started Free</button>
         </div>
-
         <div class="pricing-card popular">
           <h3>Creative Pro</h3>
           <div class="price-row">
-            <p
-              class="price-amount"
-              data-monthly="12"
-              data-yearly="9.6"
-            >12</p>
+            <p class="price-amount" data-monthly="12" data-yearly="10">$12</p>
             <span>/month</span>
           </div>
           <ul>
@@ -172,19 +137,12 @@
             <li>50 GB storage</li>
             <li>Priority support</li>
           </ul>
-          <button class="cta-button">
-            Start Free Trial
-          </button>
+          <button class="cta-button">Start Free Trial</button>
         </div>
-
         <div class="pricing-card">
           <h3>Team</h3>
           <div class="price-row">
-            <p
-              class="price-amount"
-              data-monthly="25"
-              data-yearly="20"
-            >25</p>
+            <p class="price-amount" data-monthly="25" data-yearly="20">$25</p>
             <span>/month</span>
           </div>
           <ul>
@@ -193,27 +151,22 @@
             <li>API access</li>
             <li>Dedicated support</li>
           </ul>
-          <button class="cta-button">
-            Contact Sales
-          </button>
+          <button class="cta-button">Contact Sales</button>
         </div>
       </div>
     </section>
 
-    <!-- ABOUT (2×2 grid) -->
+    <!-- ABOUT -->
     <section id="about" class="about">
       <div class="section-header">
         <h2>Meet the SnailMail Team</h2>
-        <p>
-          Passionate creators building mindful
-          tools
-        </p>
+        <p>Passionate creators building mindful tools</p>
       </div>
       <div class="team-grid">
         <div class="team-card">
           <div class="team-icon">👩‍💻</div>
           <h3>Sarah Chen</h3>
-          <p class="role">Founder & CEO</p>
+          <p class="role">Founder &amp; CEO</p>
         </div>
         <div class="team-card">
           <div class="team-icon">👨‍🎨</div>
@@ -242,63 +195,27 @@
       <div class="faq-list">
         <div class="faq-item">
           <button onclick="toggleFaq(this)">
-            What makes SnailMail different?
-            <span class="arrow">▾</span>
+            What makes SnailMail different?<span class="arrow">▾</span>
           </button>
-          <div class="faq-answer">
-            <p>
-              We focus on quality, creativity, and
-              mindfulness over volume.
-            </p>
-          </div>
+          <div class="faq-answer"><p>We focus on quality, creativity, and mindfulness over volume.</p></div>
         </div>
         <div class="faq-item">
           <button onclick="toggleFaq(this)">
-            Is my data safe?
-            <span class="arrow">▾</span>
+            Is my data safe?<span class="arrow">▾</span>
           </button>
-          <div class="faq-answer">
-            <p>
-              Yes—end-to-end encryption and no
-              third-party tracking.
-            </p>
-          </div>
+          <div class="faq-answer"><p>Yes—end-to-end encryption and no third-party tracking.</p></div>
         </div>
         <div class="faq-item">
           <button onclick="toggleFaq(this)">
-            Can I import my old emails?
-            <span class="arrow">▾</span>
+            Can I import my old emails?<span class="arrow">▾</span>
           </button>
-          <div class="faq-answer">
-            <p>
-              Absolutely—you can migrate from Gmail,
-              Outlook & more in seconds.
-            </p>
-          </div>
+          <div class="faq-answer"><p>Absolutely—you can migrate from Gmail, Outlook &amp; more in seconds.</p></div>
         </div>
         <div class="faq-item">
           <button onclick="toggleFaq(this)">
-            Do you have a mobile app?
-            <span class="arrow">▾</span>
+            Do you have a mobile app?<span class="arrow">▾</span>
           </button>
-          <div class="faq-answer">
-            <p>
-              Yes—fully-featured iOS & Android apps
-              are coming soon.
-            </p>
-          </div>
-        </div>
-        <div class="faq-item">
-          <button onclick="toggleFaq(this)">
-            How do I cancel my subscription?
-            <span class="arrow">▾</span>
-          </button>
-          <div class="faq-answer">
-            <p>
-              You can cancel anytime from your
-              account settings—no questions asked.
-            </p>
-          </div>
+          <div class="faq-answer"><p>Yes—fully featured iOS &amp; Android apps are coming soon.</p></div>
         </div>
       </div>
     </section>
@@ -307,41 +224,28 @@
     <section id="contact" class="contact">
       <div class="section-header">
         <h2>Get in Touch</h2>
-        <p>Send us a message—we’ll reply within 24 h</p>
+        <p>Send us a message—we’ll get back within 24h</p>
       </div>
       <form id="contact-form" class="contact-form">
-        <label>
-          Name
-          <input type="text" name="name" required />
-        </label>
-        <label>
-          Email
-          <input type="email" name="email" required />
-        </label>
-        <label>
-          Subject
+        <label>Name<input type="text" name="name" required /></label>
+        <label>Email<input type="email" name="email" required /></label>
+        <label>Subject
           <select name="subject">
             <option>General Inquiry</option>
             <option>Support</option>
             <option>Partnership</option>
           </select>
         </label>
-        <label>
-          Message
-          <textarea name="message" rows="5" required></textarea>
-        </label>
-        <button type="submit" class="cta-button">
-          Send Message
-        </button>
+        <label>Message<textarea name="message" rows="5" required></textarea></label>
+        <button type="submit" class="cta-button">Send Message</button>
       </form>
     </section>
 
-    <!-- SUCCESS TOAST -->
-    <div id="success-message" class="success-message">
-      <p></p>
-    </div>
+    <!-- SUCCESS MESSAGE POPUP -->
+    <div id="success-message" class="success-message"><p></p></div>
   </main>
 
+  <!-- Main script -->
   <script src="./js/script.js" defer></script>
 </body>
 </html>
