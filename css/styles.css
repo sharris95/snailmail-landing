@@ -64,11 +64,17 @@ body.dark-mode .contact-form {
   box-shadow: 0 4px 20px rgba(0,0,0,0.2);
 }
 
-/* force pricing & FAQ section headers to dark text */
+/* pricing & FAQ headers */
 body.dark-mode #pricing .section-header h2,
 body.dark-mode #pricing .section-header p,
 body.dark-mode #faq     .section-header h2,
 body.dark-mode #faq     .section-header p {
+  color: var(--text-dark) !important;
+}
+
+/* contact header */
+body.dark-mode #contact .section-header h2,
+body.dark-mode #contact .section-header p {
   color: var(--text-dark) !important;
 }
 
@@ -309,7 +315,7 @@ body.dark-mode #faq     .section-header p {
 
 /* ──────────────────────────────────────────
    8) About / Team (2×2)
-────────────────────────────────────────── */;
+────────────────────────────────────────── */
 .team-grid {
   display: grid;
   grid-template-columns: repeat(2,1fr);
