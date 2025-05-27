@@ -2,14 +2,14 @@
    0) Variables & Reset
 ────────────────────────────────────────── */
 :root {
-  --primary-gradient:    linear-gradient(45deg,#ff6b6b,#ee5a24);
-  --hero-gradient:       linear-gradient(135deg,#667eea,#764ba2);
-  --accent-blue:         #667eea;
-  --text-light:          #fff;
-  --text-dark:           #333;
-  --surface-white:       rgba(255,255,255,0.95);
-  --shadow-light:        0 4px 20px rgba(0,0,0,0.08);
-  --shadow-heavy:        0 20px 60px rgba(0,0,0,0.12);
+  --primary-gradient: linear-gradient(45deg,#ff6b6b,#ee5a24);
+  --hero-gradient:    linear-gradient(135deg,#667eea,#764ba2);
+  --accent-blue:      #667eea;
+  --text-light:       #fff;
+  --text-dark:        #333;
+  --surface-white:    rgba(255,255,255,0.95);
+  --shadow-light:     0 4px 20px rgba(0,0,0,0.08);
+  --shadow-heavy:     0 20px 60px rgba(0,0,0,0.12);
 }
 
 * {
@@ -32,7 +32,7 @@ body {
 }
 
 /* ──────────────────────────────────────────
-   DARK MODE
+   Dark Mode
 ────────────────────────────────────────── */
 body.dark-mode {
   background: #121212;
@@ -49,9 +49,8 @@ body.dark-mode .nav-links a.active::after,
 body.dark-mode .nav-links a:hover::after {
   background: var(--accent-blue);
 }
-body.dark-mode .hero {
+body.dark-mode #home.hero {
   background: linear-gradient(135deg,#2c2c2c,#3a3a3a);
-  color: var(--text-light);
 }
 body.dark-mode .cta-button {
   background: linear-gradient(45deg,#ee5a24,#ff6b6b);
@@ -65,8 +64,7 @@ body.dark-mode .contact-form {
   color: var(--text-light);
   box-shadow: 0 4px 20px rgba(0,0,0,0.2);
 }
-
-/* keep section headers readable in dark-mode */
+/* keep section headers readable */
 body.dark-mode #pricing .section-header h2,
 body.dark-mode #pricing .section-header p,
 body.dark-mode #faq     .section-header h2,
@@ -77,42 +75,29 @@ body.dark-mode #contact .section-header p {
 }
 
 /* ──────────────────────────────────────────
-   1) Navigation & Logo
+   Navigation & Logo
 ────────────────────────────────────────── */
 .nav-header {
-  position: fixed;
-  top: 0; left: 0; right: 0;
-  background: #fff;
-  z-index: 1000;
+  position: fixed; top: 0; left: 0; right: 0;
+  background: #fff; z-index: 1000;
   box-shadow: 0 2px 8px rgba(0,0,0,0.08);
 }
 .nav-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  max-width: 1200px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between;
   padding: 1rem 2rem;
 }
 .logo {
-  display: flex;
-  align-items: center;
-  gap: .8rem;
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: var(--accent-blue);
-  text-decoration: none;
+  display: flex; align-items: center; gap: .8rem;
+  font-size: 1.5rem; font-weight: 700;
+  color: var(--accent-blue); text-decoration: none;
 }
 .nav-links {
-  display: flex;
-  gap: 2rem;
-  list-style: none;
+  display: flex; gap: 2rem; list-style: none;
 }
 .nav-links a {
-  position: relative;
-  font-weight: 500;
-  text-decoration: none;
-  color: var(--text-dark);
+  position: relative; font-weight: 500;
+  text-decoration: none; color: var(--text-dark);
 }
 .nav-links a:hover,
 .nav-links a.active {
@@ -120,8 +105,7 @@ body.dark-mode #contact .section-header p {
 }
 .nav-links a::after {
   content: '';
-  position: absolute;
-  bottom: -6px; left: 0;
+  position: absolute; bottom: -6px; left: 0;
   width: 100%; height: 2px;
   background: var(--accent-blue);
   transform-origin: left center;
@@ -133,97 +117,90 @@ body.dark-mode #contact .section-header p {
   transform: scaleX(1);
 }
 .mobile-menu-toggle {
-  display: none;
-  background: none;
-  border: none;
-  font-size: 1.5rem;
-  cursor: pointer;
+  display: none; background: none; border: none;
+  font-size: 1.5rem; cursor: pointer;
 }
 
 /* ──────────────────────────────────────────
-   2) Theme Toggle
+   Theme Toggle
 ────────────────────────────────────────── */
 .theme-toggle {
-  position: fixed;
-  top: .75rem; right: .75rem;
+  position: fixed; top: .75rem; right: .75rem;
   width: 44px; height: 44px;
   background: var(--surface-white);
   border: 1px solid rgba(0,0,0,0.05);
   border-radius: 50%;
-  font-size: 1.25rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  z-index: 1001;
-  transition: transform .3s;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; z-index: 1001; transition: transform .3s;
 }
 .theme-toggle:hover {
   transform: scale(1.1);
 }
 .theme-toggle:focus {
-  outline: none;
-  box-shadow: none;
+  outline: none; box-shadow: none;
 }
 
 /* ──────────────────────────────────────────
-   3) Hero Section (with side visuals)
+   Hero Section (only on #home)
 ────────────────────────────────────────── */
-.hero {
-  position: relative;     /* for pseudo-elements */
-  overflow: hidden;       /* clip visuals */
-  min-height: 75vh;       /* shortened per request */
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.page-container {
+  margin-top: 0;
+}
+#home.hero {
+  position: relative; overflow: hidden;
+  min-height: 75vh;
+  display: flex; align-items: center; justify-content: center;
   text-align: center;
-  padding: 2rem 1rem 1rem;
+  padding: 3rem 1rem 2rem;
   background: var(--hero-gradient);
   color: var(--text-light);
 }
-.hero::before,
-.hero::after {
+/* pseudo-elements for decoration.
+   make sure you’ve placed
+   circle-pattern.svg in /images */
+#home.hero::before,
+#home.hero::after {
   content: "";
   position: absolute;
-  width: 200px;
-  height: 200px;
-  background: url("../images/circle-pattern.svg") no-repeat center/contain;
+  width: 200px; height: 200px;
+  background: url("/images/circle-pattern.svg") no-repeat center/contain;
   opacity: 0.2;
 }
-.hero::before {
-  top: 10%; left: -50px;
+#home.hero::before { top: 10%; left: -50px; }
+#home.hero::after  { bottom: 10%; right: -50px; }
+
+.hero-content {
+  max-width: 640px; z-index: 1;
 }
-.hero::after {
-  bottom: 10%; right: -50px;
+.snail-icon {
+  font-size: 7rem; margin: 0.1 rem auto 2rem;
+  transform: translateX(-5px);
+}
+#home.hero h1 {
+  margin-bottom: 2rem;
+}
+#home.hero p {
+  margin-bottom: 3rem;
 }
 
 /* ──────────────────────────────────────────
-   4) Sign-Up Form
+   Sign-Up Form
 ────────────────────────────────────────── */
 .signup-form {
-  display: flex;
-  gap: 1.5rem;
-  flex-wrap: wrap;
+  display: flex; gap: 1.5rem; flex-wrap: wrap;
   justify-content: center;
 }
 .email-input {
-  width: 320px;
-  padding: 1.25rem;
-  border: none;
-  border-radius: 12px;
-  font-size: 1.2rem;
-  text-align: center;
+  width: 320px; padding: 1.25rem;
+  border: none; border-radius: 12px;
+  font-size: 1.2rem; text-align: center;
 }
 .cta-button {
   padding: 1.25rem 2.5rem;
   background: var(--primary-gradient);
-  color: #fff;
-  border: none;
-  border-radius: 12px;
-  font-size: 1.15rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: transform .3s, box-shadow .3s;
+  color: #fff; border: none; border-radius: 12px;
+  font-size: 1.15rem; font-weight: 600;
+  cursor: pointer; transition: transform .3s, box-shadow .3s;
 }
 .cta-button:hover {
   transform: translateY(-3px);
@@ -231,19 +208,18 @@ body.dark-mode #contact .section-header p {
 }
 
 /* ──────────────────────────────────────────
-   5) Section Headers
+   Section Headers
 ────────────────────────────────────────── */
 .section-header {
-  max-width: 800px;
-  margin: 0 auto 2rem;
+  max-width: 800px; margin: 0 auto 2rem;
   text-align: center;
 }
 
 /* ──────────────────────────────────────────
-   6) Features Grid (2×2)
+   Features Grid (2×2)
 ────────────────────────────────────────── */
 .features {
-  padding: 4rem 2rem; /* breathing room above and below */
+  padding: 4rem 2rem;
 }
 .feature-grid {
   display: grid;
@@ -254,144 +230,108 @@ body.dark-mode #contact .section-header p {
 }
 .feature-card {
   background: var(--surface-white);
-  border-radius: 12px;
-  padding: 2rem;
+  border-radius: 12px; padding: 2rem;
   box-shadow: var(--shadow-light);
   text-align: center;
 }
 .feature-icon {
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
+  font-size: 2.5rem; margin-bottom: 1rem;
 }
 
 /* ──────────────────────────────────────────
-   7) Pricing
+   Pricing
 ────────────────────────────────────────── */
 .pricing {
-  background: #f9fafb;
-  padding: 4rem 2rem;
+  background: #f9fafb; padding: 4rem 2rem;
 }
 .pricing-toggle {
-  text-align: center;
-  margin-bottom: 2rem;
+  text-align: center; margin-bottom: 2rem;
 }
 .toggle-option {
-  appearance: none;
-  border: 1px solid #ccc;
-  background: #fff;
-  padding: .75rem 1.5rem;
-  border-radius: 999px;
-  cursor: pointer;
-  margin: 0 .5rem;
-  transition: background .3s, color .3s;
+  appearance: none; border: 1px solid #ccc;
+  background: #fff; padding: .75rem 1.5rem;
+  border-radius: 999px; cursor: pointer;
+  margin: 0 .5rem; transition: background .3s, color .3s;
 }
 .toggle-option.active {
-  background: var(--accent-blue);
-  color: #fff;
+  background: var(--accent-blue); color: #fff;
   border-color: var(--accent-blue);
 }
 .save-note {
-  display: inline-block;
-  color: #16a34a;
-  font-weight: 600;
-  margin-left: 1rem;
+  display: inline-block; color: #16a34a;
+  font-weight: 600; margin-left: 1rem;
 }
 .pricing-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
-  gap: 2rem;
-  max-width: 1000px;
-  margin: 0 auto;
+  gap: 2rem; max-width: 1000px; margin: 0 auto;
 }
 .pricing-card {
-  background: #fff;
-  border-radius: 12px;
-  padding: 2rem;
-  box-shadow: var(--shadow-light);
-  display: flex;
-  flex-direction: column;
+  background: #fff; border-radius: 12px;
+  padding: 2rem; box-shadow: var(--shadow-light);
+  display: flex; flex-direction: column;
 }
 .pricing-card.selected {
   border: 2px solid var(--accent-blue);
 }
 .price-row {
-  display: flex;
-  align-items: baseline;
-  gap: .1rem;
-  margin-bottom: 1rem;
+  display: flex; align-items: baseline;
+  gap: .1rem; margin-bottom: 1rem;
 }
 .price-amount {
-  font-size: 2.5rem;
-  font-weight: 700;
+  font-size: 2.5rem; font-weight: 700;
   color: var(--accent-blue);
 }
 .pricing-card ul {
-  flex-grow: 1;
-  list-style: none;
-  padding-left: 0;
-  margin-bottom: 2rem;
+  flex-grow: 1; list-style: none;
+  padding-left: 0; margin-bottom: 2rem;
 }
 .pricing-card li::before {
-  content: '✔';
-  color: #16a34a;
-  margin-right: .5rem;
+  content: '✔'; color: #16a34a; margin-right: .5rem;
 }
 .pricing-card button {
-  align-self: center;
-  margin-top: auto;
+  align-self: center; margin-top: auto;
 }
 
 /* ──────────────────────────────────────────
-   8) About / Team (2×2 + spacing)
+   About / Team (2×2 grid)
 ────────────────────────────────────────── */
 .about {
-  padding: 4rem 2rem; /* breathing room */
+  padding: 4rem 2rem;
 }
 #about .team-grid {
   display: grid !important;
   grid-template-columns: repeat(2,1fr) !important;
-  gap: 2rem;
-  margin-bottom: 6rem; /* clear space before FAQ */
+  gap: 2rem; margin-bottom: 6rem;
 }
 .team-card {
   background: var(--surface-white);
-  border-radius: 12px;
-  padding: 2rem;
+  border-radius: 12px; padding: 2rem;
   box-shadow: var(--shadow-light);
   text-align: center;
 }
 .team-icon {
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
+  font-size: 2.5rem; margin-bottom: 1rem;
 }
 
 /* ──────────────────────────────────────────
-   9) FAQ
+   FAQ
 ────────────────────────────────────────── */
 .faq {
-  background: var(--surface-white);
-  padding: 4rem 2rem;
+  background: var(--surface-white); padding: 4rem 2rem;
 }
 .faq-list {
-  max-width: 800px;
-  margin: 0 auto;
+  max-width: 800px; margin: 0 auto;
 }
 .faq-item {
-  background: #fff;
-  box-shadow: var(--shadow-light);
-  border-radius: 12px;
-  margin-bottom: 1rem;
+  background: #fff; box-shadow: var(--shadow-light);
+  border-radius: 12px; margin-bottom: 1rem;
   overflow: hidden;
 }
 .faq-item button {
-  width: 100%;
-  text-align: left;
-  padding: 1rem;
-  font-weight: 600;
-  background: none;
-  border: none;
-  display: flex;
-  justify-content: space-between;
+  width: 100%; text-align: left; padding: 1rem;
+  font-weight: 600; background: none; border: none;
+  display: flex; justify-content: space-between;
   cursor: pointer;
 }
 .faq-item .arrow {
@@ -401,43 +341,33 @@ body.dark-mode #contact .section-header p {
   transform: rotate(180deg);
 }
 .faq-answer {
-  max-height: 0;
-  padding: 0 1rem;
+  max-height: 0; padding: 0 1rem;
   transition: max-height .3s ease, padding .3s ease;
 }
 .faq-item.active .faq-answer {
-  max-height: 200px;
-  padding: 1rem;
+  max-height: 200px; padding: 1rem;
 }
 
 /* ──────────────────────────────────────────
-   10) Contact
+   Contact
 ────────────────────────────────────────── */
 .contact {
-  background: #f9fafb;
-  padding: 4rem 2rem;
+  background: #f9fafb; padding: 4rem 2rem;
 }
 .contact-form {
-  max-width: 600px;
-  margin: 0 auto;
-  display: grid;
-  gap: 1.5rem;
-  background: #fff;
-  padding: 2rem;
-  border-radius: 12px;
-  box-shadow: var(--shadow-light);
+  max-width: 600px; margin: 0 auto;
+  display: grid; gap: 1.5rem;
+  background: #fff; padding: 2rem;
+  border-radius: 12px; box-shadow: var(--shadow-light);
 }
 .contact-form label {
-  display: block;
-  font-weight: 500;
+  display: block; font-weight: 500;
 }
 .contact-form input,
 .contact-form select,
 .contact-form textarea {
-  width: 100%;
-  padding: .75rem;
-  border: 1px solid #ccc;
-  border-radius: 8px;
+  width: 100%; padding: .75rem;
+  border: 1px solid #ccc; border-radius: 8px;
   font-size: 1rem;
 }
 .contact-form button {
@@ -445,14 +375,14 @@ body.dark-mode #contact .section-header p {
 }
 
 /* ──────────────────────────────────────────
-   11) Success toast (hidden)
+   Success toast (hidden)
 ────────────────────────────────────────── */
 .success-message {
   display: none !important;
 }
 
 /* ──────────────────────────────────────────
-   12) Responsive
+   Responsive
 ────────────────────────────────────────── */
 @media (max-width: 768px) {
   .nav-links { display: none; }
