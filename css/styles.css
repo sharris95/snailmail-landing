@@ -1,0 +1,322 @@
+/* ──────────────────────────────────────────
+   0) Variables & Reset
+────────────────────────────────────────── */
+:root {
+  --primary-gradient:    linear-gradient(45deg,#ff6b6b,#ee5a24);
+  --hero-gradient:       linear-gradient(135deg,#667eea,#764ba2);
+  --accent-blue:         #667eea;
+  --text-light:          #fff;
+  --text-dark:           #333;
+  --surface-white:       rgba(255,255,255,0.95);
+  --shadow-light:        0 4px 20px rgba(0,0,0,0.08);
+  --shadow-heavy:        0 20px 60px rgba(0,0,0,0.12);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+}
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  line-height: 1.6;
+  background: linear-gradient(135deg,#f5f7fa,#c3cfe2);
+  color: var(--text-dark);
+  overflow-x: hidden;
+  transition: background .3s, color .3s;
+}
+
+/* ──────────────────────────────────────────
+   DARK MODE
+────────────────────────────────────────── */
+body.dark-mode {
+  background: #121212;
+  color: var(--text-light);
+}
+body.dark-mode .nav-header {
+  background: #1e1e1e;
+  backdrop-filter: none;
+}
+body.dark-mode .nav-links a,
+body.dark-mode .logo {
+  color: var(--text-light);
+}
+body.dark-mode .nav-links a.active::after,
+body.dark-mode .nav-links a:hover::after {
+  background: var(--accent-blue);
+}
+body.dark-mode .hero {
+  background: linear-gradient(135deg,#2c2c2c,#3a3a3a);
+  color: var(--text-light);
+}
+body.dark-mode .cta-button {
+  background: linear-gradient(45deg,#ee5a24,#ff6b6b);
+}
+body.dark-mode .feature-card,
+body.dark-mode .pricing-card,
+body.dark-mode .team-card,
+body.dark-mode .faq-answer,
+body.dark-mode .contact-form {
+  background: #1e1e1e;
+  color: var(--text-light);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+}
+
+/* ──────────────────────────────────────────
+   1) Navigation & Logo (added drop-shadow)
+────────────────────────────────────────── */
+.nav-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: #fff;
+  z-index: 1000;
+  /* new: subtle shadow so header never “disappears” on white backgrounds */
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+/* ──────────────────────────────────────────
+   2) Theme Toggle
+────────────────────────────────────────── */
+.theme-toggle {
+  position: fixed; top:1rem; right:1rem;
+  width:50px; height:50px; border:none;
+  border-radius:50%; background:var(--surface-white);
+  font-size:1.5rem; cursor:pointer; z-index:1001;
+  display:flex; align-items:center; justify-content:center;
+  transition:transform .3s, background .3s;
+}
+.theme-toggle:hover {
+  transform:scale(1.1);
+  background: var(--surface-white);
+}
+
+/* ──────────────────────────────────────────
+   3) Hero Section
+────────────────────────────────────────── */
+.page-container { margin-top:0; }
+.hero {
+  min-height:90vh;
+  display:flex; align-items:center; justify-content:center;
+  text-align:center; padding:2rem 1rem 1rem;
+  background: var(--hero-gradient);
+  color:#fff;
+}
+.hero-content { z-index:1; max-width:640px; }
+.snail-icon {
+  font-size:7rem;
+  margin:0 auto 2rem;
+  transform: translateX(-5px);
+}
+.hero h1 {
+  font-size:clamp(3rem,8vw,5rem);
+  font-weight:800; margin-bottom:1rem;
+  background:linear-gradient(45deg,#fff,#f0f0f0);
+  -webkit-background-clip:text;
+  background-clip:text;
+  -webkit-text-fill-color:transparent;
+  color:transparent;
+}
+.hero p {
+  font-size:1.3rem; margin-bottom:2rem; opacity:.9;
+}
+
+/* ──────────────────────────────────────────
+   4) Sign-Up Form
+────────────────────────────────────────── */
+.signup-form {
+  display:flex; gap:1.5rem;
+  flex-wrap:wrap; justify-content:center;
+}
+.email-input {
+  padding:1.25rem; width:320px;
+  font-size:1.2rem; border:none; border-radius:12px;
+  text-align:center;
+}
+.cta-button {
+  padding:1.25rem 2.5rem;
+  background:var(--primary-gradient);
+  color:#fff; border:none; border-radius:12px;
+  font-size:1.15rem; font-weight:600; cursor:pointer;
+  transition:transform .3s, box-shadow .3s;
+}
+.cta-button:hover {
+  transform:translateY(-3px);
+  box-shadow:0 6px 20px rgba(0,0,0,.3);
+}
+
+/* ──────────────────────────────────────────
+   5) Features Grid (2×2)
+────────────────────────────────────────── */
+.feature-grid {
+  display: grid;
+  /* force exactly 2 columns, even if you only have 4 items */
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* ──────────────────────────────────────────
+   6) Pricing
+────────────────────────────────────────── */
+.pricing {
+  padding:4rem 2rem;
+  background: #f9fafb;
+}
+.pricing-toggle {
+  text-align:center; margin-bottom:2rem;
+}
+.toggle-option {
+  padding:0.75rem 1.5rem;
+  border-radius:999px; border:1px solid #ccc;
+  background:#fff; cursor:pointer;
+  margin:0 .5rem;
+  transition:background .3s, color .3s;
+}
+.toggle-option.active {
+  background: var(--accent-blue);
+  color:#fff; border-color: var(--accent-blue);
+}
+.save-note {
+  display:inline-block; margin-left:1rem;
+  color:#16a34a; font-weight:600;
+}
+.pricing-grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:2rem;
+  max-width:1000px; margin:0 auto;
+}
+.pricing-card {
+  background:#fff; border-radius:12px;
+  padding:2rem; box-shadow:var(--shadow-light);
+  display:flex; flex-direction:column;
+}
+.pricing-card.popular {
+  border:2px solid var(--accent-blue);
+}
+.price-row {
+  display:flex; align-items:baseline;
+  gap:.25rem; margin-bottom:1rem;
+}
+.price-amount {
+  font-size:2.5rem; font-weight:700;
+  color:var(--accent-blue);
+}
+.pricing-card ul {
+  flex-grow:1; list-style:none; padding-left:0;
+  margin-bottom:2rem;
+}
+.pricing-card li::before {
+  content:'✔'; color:#16a34a; margin-right:.5rem;
+}
+.pricing-card button {
+  align-self:center; margin-top:auto;
+}
+
+/* ──────────────────────────────────────────
+   7) About / Team (already 2×2, just ensuring it’s in your build)
+────────────────────────────────────────── */
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* ──────────────────────────────────────────
+   8) FAQ
+────────────────────────────────────────── */
+.faq {
+  padding:4rem 2rem;
+  background: var(--surface-white);
+}
+.faq-list {
+  max-width:800px; margin:0 auto;
+}
+.faq-item {
+  margin-bottom:1rem;
+  border-radius:12px;
+  background:#fff; box-shadow:var(--shadow-light);
+  overflow:hidden;
+  transition:max-height .3s ease;
+}
+.faq-item button {
+  width:100%; text-align:left;
+  padding:1rem; font-weight:600;
+  background:none; border:none;
+  display:flex; justify-content:space-between;
+  align-items:center; cursor:pointer;
+}
+.faq-item .arrow {
+  transition: transform .3s;
+}
+.faq-item.active .arrow {
+  transform: rotate(180deg);
+}
+.faq-answer {
+  max-height:0; padding:0 1rem;
+  transition: max-height .3s ease, padding .3s;
+}
+.faq-item.active .faq-answer {
+  max-height:200px; padding:1rem;
+}
+
+/* ──────────────────────────────────────────
+   9) Contact Form
+────────────────────────────────────────── */
+.contact {
+  padding:4rem 2rem;
+  background:#f9fafb;
+}
+.contact-form {
+  max-width:600px; margin:0 auto;
+  display:grid; gap:1.5rem;
+  background:#fff; padding:2rem;
+  border-radius:12px; box-shadow:var(--shadow-light);
+}
+.contact-form label {
+  display:block; font-weight:500;
+}
+.contact-form input,
+.contact-form textarea,
+.contact-form select {
+  width:100%; padding:0.75rem; border:1px solid #ccc;
+  border-radius:8px; font-size:1rem;
+}
+.contact-form button {
+  justify-self:end;
+}
+
+/* ──────────────────────────────────────────
+   10) Success Popup
+────────────────────────────────────────── */
+.success-message {
+  position:fixed; bottom:1.5rem; left:50%;
+  transform:translateX(-50%) translateY(100%);
+  background: var(--accent-blue); color:#fff;
+  padding:1rem 2rem; border-radius:8px;
+  box-shadow:var(--shadow-heavy);
+  transition:transform .3s ease;
+}
+.success-message.show {
+  transform:translateX(-50%) translateY(0);
+}
+
+/* ──────────────────────────────────────────
+   11) Responsive
+────────────────────────────────────────── */
+@media (max-width:768px) {
+  .nav-links { display:none; }
+  .mobile-menu-toggle { display:block; }
+  .signup-form { flex-direction:column; }
+  .feature-grid,
+  .pricing-grid { grid-template-columns:1fr; }
+  .team-grid { grid-template-columns:1fr; }
+}
