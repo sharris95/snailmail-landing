@@ -311,7 +311,6 @@ body.dark-mode #contact .section-header p {
   display: flex;
   flex-direction: column;
 }
-.pricing-card.popular,
 .pricing-card.selected {
   border: 2px solid var(--accent-blue);
 }
