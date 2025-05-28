@@ -5,7 +5,7 @@ themeToggle.addEventListener('click', () => {
   themeToggle.textContent = themeToggle.textContent === '🌙' ? '☀️' : '🌙';
 });
 
-// 2) Pricing toggle with dollar sign & rounding
+// 2) Pricing toggle
 function togglePricing(period) {
   document.querySelectorAll('.toggle-option').forEach(btn =>
     btn.classList.toggle('active', btn.dataset.period === period)
@@ -24,7 +24,7 @@ function toggleFaq(btn) {
   if (!isOpen) item.classList.add('active');
 }
 
-// 4) Success toasts (hidden by default)
+// 4) Success toast
 const success = document.getElementById('success-message');
 function showSuccess(msg) {
   success.querySelector('p').textContent = msg;
@@ -44,19 +44,18 @@ document.getElementById('contact-form').addEventListener('submit', e => {
   e.target.reset();
 });
 
-// 6) Mobile menu toggle
-document.querySelector('.mobile-menu-toggle')
-  .addEventListener('click', () => {
-    const nav = document.querySelector('.nav-links');
-    const isOpen = nav.classList.toggle('open');
-    nav.style.display = isOpen ? 'flex' : 'none';
-  });
+// 6) Mobile menu toggle (only on click)
+const toggleBtn = document.querySelector('.mobile-menu-toggle');
+const nav = document.querySelector('.nav-links');
+toggleBtn.addEventListener('click', () => {
+  const opened = nav.classList.toggle('open');
+  nav.style.display = opened ? 'flex' : 'none';
+});
 
-
-// 7) Initialize prices on load
+// 7) Initialize default pricing
 togglePricing('monthly');
 
-// 8) Card selection outline
+// 8) Pricing card selection
 document.querySelectorAll('.pricing-card').forEach(card => {
   card.addEventListener('click', () => {
     document.querySelectorAll('.pricing-card').forEach(c => c.classList.remove('selected'));
@@ -66,11 +65,10 @@ document.querySelectorAll('.pricing-card').forEach(card => {
 const popular = document.querySelector('.pricing-card.popular');
 if (popular) popular.classList.add('selected');
 
-// 9) Scroll-spy: highlight nav link for the section in view
+// 9) Scroll-spy for active nav link
 const sections = document.querySelectorAll('main section[id]');
 const navLinks = document.querySelectorAll('.nav-links a');
-
-const observer = new IntersectionObserver((entries) => {
+const observer = new IntersectionObserver(entries => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
       navLinks.forEach(l => l.classList.remove('active'));
@@ -81,5 +79,4 @@ const observer = new IntersectionObserver((entries) => {
 }, {
   rootMargin: '-40% 0px -60% 0px'
 });
-
 sections.forEach(section => observer.observe(section));
