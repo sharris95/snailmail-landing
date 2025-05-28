@@ -463,3 +463,36 @@ body.dark-mode #contact .section-header p {
     margin: .5rem auto 0;
   }
 }
+/* ──────────────────────────────────────────
+   14) Re-order header items (max-width:480px)
+────────────────────────────────────────── */
+@media (max-width: 480px) {
+  .nav-header {
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+  }
+  .nav-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+  }
+  .theme-toggle { order: 1; position: static; margin: 0; }
+  .logo         { order: 2; font-size: 1.25rem; }
+  .mobile-menu-toggle { order: 3; }
+  .nav-links    { display: none !important; }
+  .nav-links.open {
+    display: flex !important;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    right: 1rem;
+    background: #fff;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    padding: 1rem;
+    margin-top: .5rem;
+    width: 200px;
+    z-index: 1002;
+  }
+}
