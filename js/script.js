@@ -1,11 +1,22 @@
+// ──────────────────────────────────────────
+// 0) Disable browser scroll-restoration
+// ──────────────────────────────────────────
+if ('scrollRestoration' in history) {
+  history.scrollRestoration = 'manual';
+}
+
+// ──────────────────────────────────────────
 // 1) Theme toggle
+// ──────────────────────────────────────────
 const themeToggle = document.getElementById('theme-toggle');
 themeToggle.addEventListener('click', () => {
   document.body.classList.toggle('dark-mode');
   themeToggle.textContent = themeToggle.textContent === '🌙' ? '☀️' : '🌙';
 });
 
+// ──────────────────────────────────────────
 // 2) Pricing toggle
+// ──────────────────────────────────────────
 function togglePricing(period) {
   document.querySelectorAll('.toggle-option').forEach(btn =>
     btn.classList.toggle('active', btn.dataset.period === period)
@@ -16,7 +27,9 @@ function togglePricing(period) {
   });
 }
 
+// ──────────────────────────────────────────
 // 3) FAQ accordion
+// ──────────────────────────────────────────
 function toggleFaq(btn) {
   const item = btn.closest('.faq-item');
   const isOpen = item.classList.contains('active');
@@ -24,7 +37,9 @@ function toggleFaq(btn) {
   if (!isOpen) item.classList.add('active');
 }
 
+// ──────────────────────────────────────────
 // 4) Success toast
+// ──────────────────────────────────────────
 const success = document.getElementById('success-message');
 function showSuccess(msg) {
   success.querySelector('p').textContent = msg;
@@ -32,7 +47,9 @@ function showSuccess(msg) {
   setTimeout(() => success.classList.remove('show'), 3000);
 }
 
+// ──────────────────────────────────────────
 // 5) Form handlers
+// ──────────────────────────────────────────
 document.getElementById('signup-form').addEventListener('submit', e => {
   e.preventDefault();
   showSuccess("🎉 Welcome aboard! We'll be in touch soon!");
@@ -44,7 +61,9 @@ document.getElementById('contact-form').addEventListener('submit', e => {
   e.target.reset();
 });
 
+// ──────────────────────────────────────────
 // 6) Mobile menu toggle
+// ──────────────────────────────────────────
 document.querySelector('.mobile-menu-toggle')
   .addEventListener('click', () => {
     const nav = document.querySelector('.nav-links');
@@ -52,10 +71,10 @@ document.querySelector('.mobile-menu-toggle')
     nav.style.display = isOpen ? 'flex' : 'none';
   });
 
-// 7) Init prices
+// ──────────────────────────────────────────
+// 7) Init prices & popular highlight
+// ──────────────────────────────────────────
 togglePricing('monthly');
-
-// 8) Pricing-card click outline
 document.querySelectorAll('.pricing-card').forEach(card => {
   card.addEventListener('click', () => {
     document.querySelectorAll('.pricing-card').forEach(c => c.classList.remove('selected'));
@@ -64,7 +83,9 @@ document.querySelectorAll('.pricing-card').forEach(card => {
 });
 document.querySelector('.pricing-card.popular')?.classList.add('selected');
 
-// 9) Scroll-spy
+// ──────────────────────────────────────────
+// 8) Scroll-spy
+// ──────────────────────────────────────────
 const sections = document.querySelectorAll('main section[id]');
 const navLinks = document.querySelectorAll('.nav-links a');
 const observer = new IntersectionObserver((entries) => {
@@ -76,13 +97,16 @@ const observer = new IntersectionObserver((entries) => {
   });
 }, { rootMargin: '-40% 0px -60% 0px' });
 sections.forEach(sec => observer.observe(sec));
+
 // ──────────────────────────────────────────
-// 10) Prevent unwanted auto-scroll on load
+// 9) Force scroll-to-top on initial load
 // ──────────────────────────────────────────
+// a) DOMContentLoaded (most cases)
+document.addEventListener('DOMContentLoaded', () => {
+  window.scrollTo(0, 0);
+});
+
+// b) window.load (extra insurance for mobile Safari)
 window.addEventListener('load', () => {
-  // only if there’s no fragment (e.g. “#pricing”) in the URL
-  if (!window.location.hash) {
-    // slight delay to let browser finish any built-in scrolling
-    setTimeout(() => window.scrollTo(0, 0), 5);
-  }
+  setTimeout(() => window.scrollTo(0, 0), 20);
 });
