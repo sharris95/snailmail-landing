@@ -80,3 +80,10 @@ const observer = new IntersectionObserver(entries => {
   rootMargin: '-40% 0px -60% 0px'
 });
 sections.forEach(section => observer.observe(section));
+// 10) Force scroll-to-top on initial load (especially useful on mobile)
+window.addEventListener('load', () => {
+  // only do it on small viewports if you want:
+  if (window.innerWidth <= 480) {
+    window.scrollTo(0, 0);
+  }
+});

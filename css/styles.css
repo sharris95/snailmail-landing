@@ -477,7 +477,7 @@ body.dark-mode #contact .section-header p {
     justify-content: space-between;
     position: relative;
   }
-  .theme-toggle { order: 1; position: static; margin: 0; }
+  .theme-toggle { order: 1; position: static; margin: 0 1rem 0 0; }
   .logo         { order: 2; font-size: 1.25rem; }
   .mobile-menu-toggle { order: 3; }
   .nav-links    { display: none !important; }
