@@ -200,7 +200,7 @@ body.dark-mode #contact .section-header p {
 }
 .snail-icon {
   font-size: 6rem;          /* keep your existing size */
-  margin: 1.5rem auto 2rem; /* add 1.5rem top-margin to push it down */
+  margin: 1.5rem auto -.3rem; /* add 1.5rem top-margin to push it down */
   transform: translateX(-5px); /* leave your existing horizontal nudge */
 }
 #home.hero h1 {
