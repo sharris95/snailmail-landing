@@ -557,18 +557,18 @@ body.dark-mode #contact .section-header p {
     margin: .5rem auto 0;
   }
 }
+
 /* ──────────────────────────────────────────
-   Mobile: move theme-toggle off the header
+   14) Mobile: pin theme-toggle at bottom-right
 ────────────────────────────────────────── */
 @media (max-width: 480px) {
   .theme-toggle {
-    /* cancel the earlier “top/right” */
-    position: fixed !important;
-    top: auto     !important;
-    right: auto   !important;
-    bottom: 1rem  !important;
-    right: 1rem   !important;
-    margin: 0;
-    z-index: 1003;
+    position: fixed !important;                              /* float over content */
+    bottom: calc(env(safe-area-inset-bottom, 16px) + 16px);   /* leave space for home-indicator */
+    right: 16px !important;                                  /* distance from right edge */
+    top: auto !important;                                    /* cancel any top setting */
+    margin: 0;                                               /* reset margin */
+    z-index: 1005;                                           /* above everything */
+    transform: none;                                         /* cancel any transforms */
   }
 }
