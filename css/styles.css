@@ -199,9 +199,9 @@ body.dark-mode #contact .section-header p {
   z-index: 1;
 }
 .snail-icon {
-  font-size: 6rem;        /* slightly smaller */
-  margin: 0 auto 2rem;
-  transform: translateX(-5px);
+  font-size: 6rem;          /* keep your existing size */
+  margin: 1.5rem auto 2rem; /* add 1.5rem top-margin to push it down */
+  transform: translateX(-5px); /* leave your existing horizontal nudge */
 }
 #home.hero h1 {
   font-size: clamp(3rem,8vw,5rem);
