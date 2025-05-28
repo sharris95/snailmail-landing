@@ -488,7 +488,7 @@ body.dark-mode #contact .section-header p {
    13) Mobile-only refinements (max-width:480px)
 ────────────────────────────────────────── */
 @media (max-width: 480px) {
-  /* hide links until menu is opened */
+  /* hide desktop links until menu is opened */
   .nav-links {
     display: none !important;
   }
@@ -521,6 +521,8 @@ body.dark-mode #contact .section-header p {
     font-size: 1.5rem;
     margin-left: auto;
   }
+
+  /* theme-toggle stays in header row by default */
   .theme-toggle {
     position: absolute;
     top: .5rem;
@@ -539,16 +541,14 @@ body.dark-mode #contact .section-header p {
     width: 100%;
   }
 
-  /* section spacing */
-  .section-header {
-    margin-bottom: 1rem;
-  }
-  .features { padding-bottom: 1rem; }
+  /* tighten section spacing */
+  .section-header { margin-bottom: 1rem; }
+  .features     { padding-bottom: 1rem; }
   .pricing {
     padding: 1rem 2rem;
   }
-  .about   { padding-bottom: 1rem; }
-  .faq     { padding: 1rem 2rem; }
+  .about        { padding-bottom: 1rem; }
+  .faq          { padding: 1rem 2rem; }
   .pricing-toggle {
     margin-bottom: 1.5rem;
   }
@@ -563,12 +563,13 @@ body.dark-mode #contact .section-header p {
 ────────────────────────────────────────── */
 @media (max-width: 480px) {
   .theme-toggle {
-    position: fixed !important;                              /* float over content */
-    bottom: calc(env(safe-area-inset-bottom, 16px) + 16px);   /* leave space for home-indicator */
-    right: 16px !important;                                  /* distance from right edge */
-    top: auto !important;                                    /* cancel any top setting */
-    margin: 0;                                               /* reset margin */
-    z-index: 1005;                                           /* above everything */
-    transform: none;                                         /* cancel any transforms */
+    /* float over content, out of the header */
+    position: fixed !important;
+    bottom: calc(env(safe-area-inset-bottom, 16px) + 16px);
+    right: 16px !important;
+    top: auto !important;
+    margin: 0 !important;
+    z-index: 1005;
+    transform: none !important;
   }
 }
