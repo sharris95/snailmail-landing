@@ -431,3 +431,99 @@ body.dark-mode #contact .section-header p {
     font-size: 1.25rem;
   }
 }
+/* ──────────────────────────────────────────
+   15) Mobile-only refinements (max-width:480px)
+────────────────────────────────────────── */
+@media (max-width: 480px) {
+  /* ---- HEADER ---- */
+  /* hide desktop nav links by default */
+  .nav-links {
+    display: none !important;
+  }
+  /* style dropdown panel when .mobile-menu-toggle toggles it inline */
+  .nav-links.open {
+    display: flex !important;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    right: 1rem;
+    background: #fff;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    padding: 1rem;
+    margin-top: .5rem;
+    width: 200px;
+    z-index: 1002;
+  }
+  /* hide links in the header row */
+  .nav-links a {
+    margin: .5rem 0;
+  }
+  /* adjust hamburger & toggle position */
+  .mobile-menu-toggle {
+    display: block;
+    font-size: 1.5rem;
+    background: none;
+    border: none;
+    margin-left: auto;
+  }
+  .nav-container {
+    position: relative;
+    padding: .75rem 1rem;
+  }
+  .logo {
+    font-size: 1.25rem;
+  }
+
+  /* hook into your existing JS toggle:
+     in script.js change nav.style.display logic
+     to also toggle an “open” class, e.g.:
+
+     const nav = document.querySelector('.nav-links');
+     if (nav.classList.toggle('open')) {
+       nav.style.display = 'flex';
+     } else {
+       nav.style.display = 'none';
+     }
+  */
+
+  /* ---- FORM CENTERING ---- */
+  .signup-form {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+  .email-input,
+  .cta-button {
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+  }
+
+  /* ---- SECTION GAPS ---- */
+  /* make section headers tighter */
+  .section-header {
+    margin-bottom: 1rem;
+  }
+  /* between Mood Boards and Pricing */
+  .features {
+    padding-bottom: 1rem;
+  }
+  .pricing {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+  /* between About and FAQ */
+  .about {
+    padding-bottom: 1rem;
+  }
+  .faq {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+
+  /* reduce team-grid bottom gap */
+  #about .team-grid {
+    margin-bottom: 2rem !important;
+  }
+}

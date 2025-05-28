@@ -45,10 +45,13 @@ document.getElementById('contact-form').addEventListener('submit', e => {
 });
 
 // 6) Mobile menu toggle
-document.querySelector('.mobile-menu-toggle').addEventListener('click', () => {
-  const nav = document.querySelector('.nav-links');
-  nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
-});
+document.querySelector('.mobile-menu-toggle')
+  .addEventListener('click', () => {
+    const nav = document.querySelector('.nav-links');
+    const isOpen = nav.classList.toggle('open');
+    nav.style.display = isOpen ? 'flex' : 'none';
+  });
+
 
 // 7) Initialize prices on load
 togglePricing('monthly');
