@@ -396,3 +396,38 @@ body.dark-mode #contact .section-header p {
     flex-direction: column !important;
   }
 }
+/* ──────────────────────────────────────────
+   14) Mobile nav & toggle fixes
+────────────────────────────────────────── */
+@media (max-width: 480px) {
+  /* Make the header container wrap its contents (logo + hamburger + links) */
+  .nav-header {
+    position: relative;  /* from fixed → relative on mobile */
+  }
+
+  /* Anchor the toggle inside that header instead of the viewport */
+  .theme-toggle {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    z-index: 1001;
+  }
+
+  /* When the menu opens, nav-links will slide down inside the header */
+  .nav-header .nav-links {
+    position: static;
+    display: flex !important;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 3rem;    /* clear space below logo / toggle */
+    background: var(--surface-white);
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: var(--shadow-light);
+  }
+
+  /* Shrink the logo slightly to save vertical real estate */
+  .logo {
+    font-size: 1.25rem;
+  }
+}
