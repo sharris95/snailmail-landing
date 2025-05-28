@@ -76,3 +76,13 @@ const observer = new IntersectionObserver((entries) => {
   });
 }, { rootMargin: '-40% 0px -60% 0px' });
 sections.forEach(sec => observer.observe(sec));
+// ──────────────────────────────────────────
+// 10) Prevent unwanted auto-scroll on load
+// ──────────────────────────────────────────
+window.addEventListener('load', () => {
+  // only if there’s no fragment (e.g. “#pricing”) in the URL
+  if (!window.location.hash) {
+    // slight delay to let browser finish any built-in scrolling
+    setTimeout(() => window.scrollTo(0, 0), 5);
+  }
+});
