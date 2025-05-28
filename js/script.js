@@ -44,46 +44,35 @@ document.getElementById('contact-form').addEventListener('submit', e => {
   e.target.reset();
 });
 
-// 6) Mobile menu toggle (only on click)
-const toggleBtn = document.querySelector('.mobile-menu-toggle');
-const nav = document.querySelector('.nav-links');
-toggleBtn.addEventListener('click', () => {
-  const opened = nav.classList.toggle('open');
-  nav.style.display = opened ? 'flex' : 'none';
-});
+// 6) Mobile menu toggle
+document.querySelector('.mobile-menu-toggle')
+  .addEventListener('click', () => {
+    const nav = document.querySelector('.nav-links');
+    const isOpen = nav.classList.toggle('open');
+    nav.style.display = isOpen ? 'flex' : 'none';
+  });
 
-// 7) Initialize default pricing
+// 7) Init prices
 togglePricing('monthly');
 
-// 8) Pricing card selection
+// 8) Pricing-card click outline
 document.querySelectorAll('.pricing-card').forEach(card => {
   card.addEventListener('click', () => {
     document.querySelectorAll('.pricing-card').forEach(c => c.classList.remove('selected'));
     card.classList.add('selected');
   });
 });
-const popular = document.querySelector('.pricing-card.popular');
-if (popular) popular.classList.add('selected');
+document.querySelector('.pricing-card.popular')?.classList.add('selected');
 
-// 9) Scroll-spy for active nav link
+// 9) Scroll-spy
 const sections = document.querySelectorAll('main section[id]');
 const navLinks = document.querySelectorAll('.nav-links a');
-const observer = new IntersectionObserver(entries => {
+const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
       navLinks.forEach(l => l.classList.remove('active'));
-      const link = document.querySelector(`.nav-links a[href="#${entry.target.id}"]`);
-      if (link) link.classList.add('active');
+      document.querySelector(`.nav-links a[href="#${entry.target.id}"]`)?.classList.add('active');
     }
   });
-}, {
-  rootMargin: '-40% 0px -60% 0px'
-});
-sections.forEach(section => observer.observe(section));
-// 10) Force scroll-to-top on initial load (especially useful on mobile)
-window.addEventListener('load', () => {
-  // only do it on small viewports if you want:
-  if (window.innerWidth <= 480) {
-    window.scrollTo(0, 0);
-  }
-});
+}, { rootMargin: '-40% 0px -60% 0px' });
+sections.forEach(sec => observer.observe(sec));

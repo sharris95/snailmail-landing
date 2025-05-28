@@ -1,5 +1,3 @@
-/* styles.css */
-
 /* ──────────────────────────────────────────
    0) Variables & Reset
 ────────────────────────────────────────── */
@@ -13,14 +11,11 @@
   --shadow-light:     0 4px 20px rgba(0,0,0,0.08);
   --shadow-heavy:     0 20px 60px rgba(0,0,0,0.12);
 }
+
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+  margin: 0; padding: 0; box-sizing: border-box;
 }
-html {
-  scroll-behavior: smooth;
-}
+html { scroll-behavior: smooth; }
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
   line-height: 1.6;
@@ -31,50 +26,34 @@ body {
 }
 
 /* ──────────────────────────────────────────
-   Dark Mode
+   DARK MODE
 ────────────────────────────────────────── */
 body.dark-mode {
   background: #121212;
   color: var(--text-light);
 }
-body.dark-mode .nav-header {
-  background: #1e1e1e;
-}
+body.dark-mode .nav-header { background: #1e1e1e; }
 body.dark-mode .nav-links a,
-body.dark-mode .logo {
-  color: var(--text-light);
-}
-body.dark-mode .nav-links a.active::after,
-body.dark-mode .nav-links a:hover::after {
-  background: var(--accent-blue);
-}
-body.dark-mode #home.hero {
-  background: linear-gradient(135deg,#2c2c2c,#3a3a3a);
-}
-body.dark-mode .cta-button {
-  background: linear-gradient(45deg,#ee5a24,#ff6b6b);
-}
+body.dark-mode .logo { color: var(--text-light); }
+body.dark-mode .nav-links a:hover::after,
+body.dark-mode .nav-links a.active::after { background: var(--accent-blue); }
+body.dark-mode #home.hero { background: linear-gradient(135deg,#2c2c2c,#3a3a3a); }
+body.dark-mode .cta-button { background: linear-gradient(45deg,#ee5a24,#ff6b6b); }
 body.dark-mode .feature-card,
 body.dark-mode .pricing-card,
 body.dark-mode .team-card,
 body.dark-mode .faq-answer,
 body.dark-mode .contact-form {
-  background: #1e1e1e;
-  color: var(--text-light);
-  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+  background: #1e1e1e; color: var(--text-light); box-shadow: 0 4px 20px rgba(0,0,0,0.2);
 }
-/* keep section headers readable */
-body.dark-mode #pricing .section-header h2,
-body.dark-mode #pricing .section-header p,
-body.dark-mode #faq     .section-header h2,
-body.dark-mode #faq     .section-header p,
-body.dark-mode #contact .section-header h2,
-body.dark-mode #contact .section-header p {
+body.dark-mode #pricing .section-header *,
+body.dark-mode #faq .section-header *,
+body.dark-mode #contact .section-header * {
   color: var(--text-dark) !important;
 }
 
 /* ──────────────────────────────────────────
-   1) Navigation & Logo
+   Navigation & Logo
 ────────────────────────────────────────── */
 .nav-header {
   position: fixed; top: 0; left: 0; right: 0;
@@ -99,9 +78,7 @@ body.dark-mode #contact .section-header p {
   text-decoration: none; color: var(--text-dark);
 }
 .nav-links a:hover,
-.nav-links a.active {
-  color: var(--accent-blue);
-}
+.nav-links a.active { color: var(--accent-blue); }
 .nav-links a::after {
   content: '';
   position: absolute; bottom: -6px; left: 0;
@@ -112,39 +89,35 @@ body.dark-mode #contact .section-header p {
   transition: transform .3s;
 }
 .nav-links a:hover::after,
-.nav-links a.active::after {
-  transform: scaleX(1);
-}
+.nav-links a.active::after { transform: scaleX(1); }
 .mobile-menu-toggle {
   display: none; background: none; border: none;
   font-size: 1.5rem; cursor: pointer;
 }
 
 /* ──────────────────────────────────────────
-   2) Theme Toggle
+   Theme Toggle (global bubble)
 ────────────────────────────────────────── */
 .theme-toggle {
-  position: fixed; top: .75rem; right: .75rem;
-  width: 44px; height: 44px;
+  position: fixed;
+  bottom: 1rem; right: 1rem;
+  width: 48px; height: 48px;
   background: var(--surface-white);
-  border: 1px solid rgba(0,0,0,0.05);
+  border: 1px solid rgba(0,0,0,0.1);
   border-radius: 50%;
   display: flex; align-items: center; justify-content: center;
-  cursor: pointer; z-index: 1001; transition: transform .3s;
+  cursor: pointer; z-index: 1002;
+  transition: transform .2s, box-shadow .2s;
 }
 .theme-toggle:hover {
   transform: scale(1.1);
-}
-.theme-toggle:focus {
-  outline: none; box-shadow: none;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.15);
 }
 
 /* ──────────────────────────────────────────
-   3) Hero Section
+   Hero Section
 ────────────────────────────────────────── */
-.page-container {
-  margin-top: 0;
-}
+.page-container { margin-top: 0; }
 #home.hero {
   position: relative; overflow: hidden;
   min-height: 75vh;
@@ -164,24 +137,16 @@ body.dark-mode #contact .section-header p {
 }
 #home.hero::before { top: 10%; left: -50px; }
 #home.hero::after  { bottom: 10%; right: -50px; }
-
-.hero-content {
-  max-width: 640px; z-index: 1;
-}
+.hero-content { max-width: 640px; z-index: 1; }
 .snail-icon {
-  font-size: 7rem; margin: 0 auto 2rem;
+  font-size: 7rem; margin: .5rem auto 2rem;
   transform: translateX(-5px);
 }
-#home.hero h1 {
-  /* uncluttered heading */
-  margin-bottom: 2rem;
-}
-#home.hero p {
-  margin-bottom: 3rem;
-}
+#home.hero h1 { margin-bottom: 2rem; }
+#home.hero p  { margin-bottom: 3rem; }
 
 /* ──────────────────────────────────────────
-   4) Sign-Up Form
+   Sign-Up Form
 ────────────────────────────────────────── */
 .signup-form {
   display: flex; gap: 1.5rem; flex-wrap: wrap;
@@ -205,7 +170,7 @@ body.dark-mode #contact .section-header p {
 }
 
 /* ──────────────────────────────────────────
-   5) Section Headers
+   Section Headers
 ────────────────────────────────────────── */
 .section-header {
   max-width: 800px; margin: 0 auto 2rem;
@@ -213,7 +178,7 @@ body.dark-mode #contact .section-header p {
 }
 
 /* ──────────────────────────────────────────
-   6) Features Grid
+   Features Grid
 ────────────────────────────────────────── */
 .features {
   padding: 4rem 2rem;
@@ -222,7 +187,8 @@ body.dark-mode #contact .section-header p {
   display: grid;
   grid-template-columns: repeat(2,1fr);
   gap: 2rem;
-  max-width: 1000px; margin: 0 auto 4rem;
+  max-width: 1000px;
+  margin: 0 auto 4rem;
 }
 .feature-card {
   background: var(--surface-white);
@@ -235,7 +201,7 @@ body.dark-mode #contact .section-header p {
 }
 
 /* ──────────────────────────────────────────
-   7) Pricing
+   Pricing
 ────────────────────────────────────────── */
 .pricing {
   background: #f9fafb; padding: 4rem 2rem;
@@ -267,6 +233,7 @@ body.dark-mode #contact .section-header p {
   padding: 2rem; box-shadow: var(--shadow-light);
   display: flex; flex-direction: column;
 }
+.pricing-card.popular,
 .pricing-card.selected {
   border: 2px solid var(--accent-blue);
 }
@@ -290,7 +257,7 @@ body.dark-mode #contact .section-header p {
 }
 
 /* ──────────────────────────────────────────
-   8) About / Team
+   About / Team (2×2)
 ────────────────────────────────────────── */
 .about {
   padding: 4rem 2rem;
@@ -311,7 +278,7 @@ body.dark-mode #contact .section-header p {
 }
 
 /* ──────────────────────────────────────────
-   9) FAQ
+   FAQ
 ────────────────────────────────────────── */
 .faq {
   background: var(--surface-white); padding: 4rem 2rem;
@@ -345,7 +312,7 @@ body.dark-mode #contact .section-header p {
 }
 
 /* ──────────────────────────────────────────
-   10) Contact
+   Contact
 ────────────────────────────────────────── */
 .contact {
   background: #f9fafb; padding: 4rem 2rem;
@@ -356,7 +323,9 @@ body.dark-mode #contact .section-header p {
   background: #fff; padding: 2rem;
   border-radius: 12px; box-shadow: var(--shadow-light);
 }
-.contact-form label { display: block; font-weight: 500; }
+.contact-form label {
+  display: block; font-weight: 500;
+}
 .contact-form input,
 .contact-form select,
 .contact-form textarea {
@@ -364,17 +333,19 @@ body.dark-mode #contact .section-header p {
   border: 1px solid #ccc; border-radius: 8px;
   font-size: 1rem;
 }
-.contact-form button { justify-self: end; }
+.contact-form button {
+  justify-self: end;
+}
 
 /* ──────────────────────────────────────────
-   11) Success toast (hidden)
+   Success toast (hidden)
 ────────────────────────────────────────── */
 .success-message {
   display: none !important;
 }
 
 /* ──────────────────────────────────────────
-   12) Responsive (max-width:768px)
+   Responsive (tablet)
 ────────────────────────────────────────── */
 @media (max-width: 768px) {
   .nav-links { display: none; }
@@ -390,109 +361,37 @@ body.dark-mode #contact .section-header p {
 }
 
 /* ──────────────────────────────────────────
-   13) Mobile-only refinements (max-width:480px)
+   Mobile-only refinements (max-width:480px)
 ────────────────────────────────────────── */
 @media (max-width: 480px) {
-  /* hide links until menu is opened */
-  .nav-links {
-    display: none !important;
-  }
-  /* menu drops down when .open is added */
-  .nav-links.open {
-    display: flex !important;
-    flex-direction: column;
-    position: absolute;
-    top: 100%;
-    right: 1rem;
-    background: #fff;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-    border-radius: 8px;
-    padding: 1rem;
-    margin-top: .5rem;
-    width: 200px;
-    z-index: 1002;
-  }
-
-  /* tighten header */
+  /* header layout: logo + burger */
   .nav-container {
-    padding: .5rem 1rem;
-    position: relative;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: .75rem 1rem; position: relative;
   }
-  .logo {
-    font-size: 1.25rem;
-  }
-  .mobile-menu-toggle {
-    display: block;
-    font-size: 1.5rem;
-    margin-left: auto;
-  }
-  .theme-toggle {
-    position: absolute;
-    top: .5rem;
-    right: .5rem;
-    z-index: 1003;
+  .logo { font-size: 1.25rem; }
+  .mobile-menu-toggle { display: block; }
+  /* hide nav-links until toggled */
+  .nav-links { display: none !important; }
+  .nav-links.open {
+    display: flex !important; flex-direction: column;
+    position: absolute; top: 100%; right: 1rem;
+    background: #fff; box-shadow: var(--shadow-light);
+    border-radius: 8px; padding: 1rem; margin-top: .5rem;
+    width: 200px; z-index: 1002;
   }
 
-  /* center & stack form */
-  .signup-form {
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-  }
-  .email-input,
-  .cta-button {
-    width: 100%;
-  }
-
-  /* section spacing */
-  .section-header {
-    margin-bottom: 1rem;
-  }
+  /* form stacking & section spacing */
+  .signup-form { flex-direction: column; align-items: center; gap: 1rem; }
+  .email-input, .cta-button { width: 100%; }
+  .section-header { margin-bottom: 1rem; }
   .features { padding-bottom: 1rem; }
   .pricing {
     padding: 1rem 2rem;
-    /* extra breathing room under toggle */
   }
-  .about   { padding-bottom: 1rem; }
-  .faq     { padding: 1rem 2rem; }
-  .pricing-toggle {
-    margin-bottom: 1.5rem;
-  }
-  .save-note {
-    display: block;
-    margin: .5rem auto 0;
-  }
-}
-/* ──────────────────────────────────────────
-   14) Re-order header items (max-width:480px)
-────────────────────────────────────────── */
-@media (max-width: 480px) {
-  .nav-header {
-    padding-top: 0.75rem;
-    padding-bottom: 0.75rem;
-  }
-  .nav-container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    position: relative;
-  }
-  .theme-toggle { order: 1; position: static; margin: 0 1rem 0 0; }
-  .logo         { order: 2; font-size: 1.25rem; }
-  .mobile-menu-toggle { order: 3; }
-  .nav-links    { display: none !important; }
-  .nav-links.open {
-    display: flex !important;
-    flex-direction: column;
-    position: absolute;
-    top: 100%;
-    right: 1rem;
-    background: #fff;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-    border-radius: 8px;
-    padding: 1rem;
-    margin-top: .5rem;
-    width: 200px;
-    z-index: 1002;
-  }
+  .pricing-toggle { margin-bottom: 1.5rem; }
+  .save-note { display: block; margin: .5rem auto 0; }
+  .about { padding-bottom: 1rem; }
+  .faq   { padding: 1rem 2rem; }
+  #about .team-grid { margin-bottom: 2rem !important; }
 }

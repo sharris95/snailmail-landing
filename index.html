@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>SnailMail</title>
 
-  <!-- only ICO now -->
-  <link rel="icon" href="/favicon.ico"/>
+  <!-- favicon -->
+  <link rel="icon" href="/favicon.ico" />
 
   <!-- your stylesheet -->
   <link rel="stylesheet" href="./css/styles.css" />
@@ -16,18 +16,11 @@
   <!-- NAV -->
   <header class="nav-header">
     <div class="nav-container">
-      <!-- 1. theme toggle moved inside -->
-      <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">🌙</button>
-  
-      <!-- 2. your logo in the middle -->
       <a href="#home" class="logo">
         <span class="snail-emoji">🐌</span>
         SnailMail
       </a>
-  
-      <!-- 3. mobile menu toggle on right -->
       <button class="mobile-menu-toggle" aria-label="Toggle menu">☰</button>
-  
       <ul class="nav-links">
         <li><a href="#home" class="active">Home</a></li>
         <li><a href="#features">Features</a></li>
@@ -38,22 +31,26 @@
       </ul>
     </div>
   </header>
-  
 
   <!-- THEME TOGGLE -->
   <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">🌙</button>
 
-  <!-- MAIN -->
+  <!-- MAIN CONTENT -->
   <main class="page-container">
 
-    <!-- HERO -->
+    <!-- HERO / HOME -->
     <section id="home" class="hero">
       <div class="hero-content">
         <div class="snail-icon">🐌</div>
         <h1>SnailMail</h1>
         <p>A calm, creative email app for artists, writers, and overthinkers.</p>
         <form id="signup-form" class="signup-form">
-          <input type="email" class="email-input" placeholder="Enter your email" required />
+          <input
+            type="email"
+            class="email-input"
+            placeholder="Enter your email"
+            required
+          />
           <button type="submit" class="cta-button">Join the Beta</button>
         </form>
       </div>
@@ -96,15 +93,20 @@
         <p>Choose the plan that works for your creative workflow</p>
       </div>
       <div class="pricing-toggle">
-        <button class="toggle-option active" data-period="monthly" onclick="togglePricing('monthly')">Monthly</button>
-        <button class="toggle-option" data-period="yearly" onclick="togglePricing('yearly')">Yearly</button>
+        <button class="toggle-option active" data-period="monthly" onclick="togglePricing('monthly')">
+          Monthly
+        </button>
+        <button class="toggle-option" data-period="yearly" onclick="togglePricing('yearly')">
+          Yearly
+        </button>
         <span class="save-note">Save 20% annually!</span>
       </div>
       <div class="pricing-grid">
         <div class="pricing-card">
           <h3>Starter</h3>
           <div class="price-row">
-            <p class="price-amount" data-monthly="0" data-yearly="0">$0</p><span>/month</span>
+            <p class="price-amount" data-monthly="0" data-yearly="0">$0</p>
+            <span>/month</span>
           </div>
           <ul>
             <li>Up to 3 email accounts</li>
@@ -116,7 +118,8 @@
         <div class="pricing-card popular">
           <h3>Creative Pro</h3>
           <div class="price-row">
-            <p class="price-amount" data-monthly="12" data-yearly="10">$12</p><span>/month</span>
+            <p class="price-amount" data-monthly="12" data-yearly="10">$12</p>
+            <span>/month</span>
           </div>
           <ul>
             <li>Unlimited email accounts</li>
@@ -129,7 +132,8 @@
         <div class="pricing-card">
           <h3>Team</h3>
           <div class="price-row">
-            <p class="price-amount" data-monthly="25" data-yearly="20">$25</p><span>/month</span>
+            <p class="price-amount" data-monthly="25" data-yearly="20">$25</p>
+            <span>/month</span>
           </div>
           <ul>
             <li>Everything in Pro</li>
@@ -151,19 +155,23 @@
       <div class="team-grid">
         <div class="team-card">
           <div class="team-icon">👩‍💻</div>
-          <h3>Sarah Chen</h3><p class="role">Founder &amp; CEO</p>
+          <h3>Sarah Chen</h3>
+          <p class="role">Founder & CEO</p>
         </div>
         <div class="team-card">
           <div class="team-icon">👨‍🎨</div>
-          <h3>Marcus Rodriguez</h3><p class="role">Head of Design</p>
+          <h3>Marcus Rodriguez</h3>
+          <p class="role">Head of Design</p>
         </div>
         <div class="team-card">
           <div class="team-icon">👩‍🔬</div>
-          <h3>Dr. Elena Petrov</h3><p class="role">Lead Engineer</p>
+          <h3>Dr. Elena Petrov</h3>
+          <p class="role">Lead Engineer</p>
         </div>
         <div class="team-card">
           <div class="team-icon">🧘‍♂️</div>
-          <h3>James Wright</h3><p class="role">Wellness Advisor</p>
+          <h3>James Wright</h3>
+          <p class="role">Wellness Advisor</p>
         </div>
       </div>
     </section>
@@ -176,19 +184,27 @@
       </div>
       <div class="faq-list">
         <div class="faq-item">
-          <button onclick="toggleFaq(this)">What makes SnailMail different?<span class="arrow">▾</span></button>
+          <button onclick="toggleFaq(this)">
+            What makes SnailMail different?<span class="arrow">▾</span>
+          </button>
           <div class="faq-answer"><p>We focus on quality, creativity, and mindfulness over volume.</p></div>
         </div>
         <div class="faq-item">
-          <button onclick="toggleFaq(this)">Is my data safe?<span class="arrow">▾</span></button>
+          <button onclick="toggleFaq(this)">
+            Is my data safe?<span class="arrow">▾</span>
+          </button>
           <div class="faq-answer"><p>Yes—end-to-end encryption and no third-party tracking.</p></div>
         </div>
         <div class="faq-item">
-          <button onclick="toggleFaq(this)">Can I import my old emails?<span class="arrow">▾</span></button>
+          <button onclick="toggleFaq(this)">
+            Can I import my old emails?<span class="arrow">▾</span>
+          </button>
           <div class="faq-answer"><p>Absolutely—you can migrate from Gmail, Outlook &amp; more in seconds.</p></div>
         </div>
         <div class="faq-item">
-          <button onclick="toggleFaq(this)">Do you have a mobile app?<span class="arrow">▾</span></button>
+          <button onclick="toggleFaq(this)">
+            Do you have a mobile app?<span class="arrow">▾</span>
+          </button>
           <div class="faq-answer"><p>Yes—fully featured iOS &amp; Android apps are coming soon.</p></div>
         </div>
       </div>
@@ -215,6 +231,7 @@
       </form>
     </section>
 
+    <!-- Success toast -->
     <div id="success-message" class="success-message"><p></p></div>
   </main>
 
