@@ -32,9 +32,9 @@ function togglePricing(period) {
 // ──────────────────────────────────────────
 function toggleFaq(btn) {
   const item = btn.closest('.faq-item');
-  const isOpen = item.classList.contains('active');
+  const wasOpen = item.classList.contains('active');
   document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
-  if (!isOpen) item.classList.add('active');
+  if (!wasOpen) item.classList.add('active');
 }
 
 // ──────────────────────────────────────────
@@ -67,12 +67,12 @@ document.getElementById('contact-form').addEventListener('submit', e => {
 document.querySelector('.mobile-menu-toggle')
   .addEventListener('click', () => {
     const nav = document.querySelector('.nav-links');
-    const isOpen = nav.classList.toggle('open');
-    nav.style.display = isOpen ? 'flex' : 'none';
+    const open = nav.classList.toggle('open');
+    nav.style.display = open ? 'flex' : 'none';
   });
 
 // ──────────────────────────────────────────
-// 7) Init prices & popular highlight
+// 7) Initialize pricing & highlight “popular”
 // ──────────────────────────────────────────
 togglePricing('monthly');
 document.querySelectorAll('.pricing-card').forEach(card => {
@@ -84,7 +84,7 @@ document.querySelectorAll('.pricing-card').forEach(card => {
 document.querySelector('.pricing-card.popular')?.classList.add('selected');
 
 // ──────────────────────────────────────────
-// 8) Scroll-spy
+// 8) Scroll-spy for nav highlights
 // ──────────────────────────────────────────
 const sections = document.querySelectorAll('main section[id]');
 const navLinks = document.querySelectorAll('.nav-links a');
@@ -92,21 +92,31 @@ const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
       navLinks.forEach(l => l.classList.remove('active'));
-      document.querySelector(`.nav-links a[href="#${entry.target.id}"]`)?.classList.add('active');
+      document.querySelector(`.nav-links a[href="#${entry.target.id}"]`)
+        ?.classList.add('active');
     }
   });
 }, { rootMargin: '-40% 0px -60% 0px' });
 sections.forEach(sec => observer.observe(sec));
 
 // ──────────────────────────────────────────
-// 9) Force scroll-to-top on initial load
+// 9) Force scroll-to-top on every load/navigation
 // ──────────────────────────────────────────
-// a) DOMContentLoaded (most cases)
+// (a) DOMContentLoaded covers first paint
 document.addEventListener('DOMContentLoaded', () => {
   window.scrollTo(0, 0);
+  // also clear any existing hash so browser won’t jump again
+  if (window.location.hash) {
+    history.replaceState(null, '', window.location.pathname + window.location.search);
+  }
 });
 
-// b) window.load (extra insurance for mobile Safari)
+// (b) window.load for extra insurance
 window.addEventListener('load', () => {
   setTimeout(() => window.scrollTo(0, 0), 20);
+});
+
+// (c) pageshow to catch back-forward cache
+window.addEventListener('pageshow', (evt) => {
+  if (evt.persisted) window.scrollTo(0, 0);
 });
